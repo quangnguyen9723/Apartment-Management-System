@@ -48,14 +48,4 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-//    private void displayResult(ResultSet resultSet) {
-//        try {
-//            while (resultSet.next()) {
-//
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 }
