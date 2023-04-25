@@ -34,13 +34,20 @@ public class Main {
         ) {
             System.out.println("connected");
 
-            String sqlQuery = "select * from users";
+//            String insertStatement = "insert into Owner (FirstName, LastName, Gender, DOB)\n" +
+//                    "values ('Quang', 'Nguyen', 'Male', '2003-07-09');";
+//            statement.execute(insertStatement);
 
-            resultSet = statement.executeQuery(sqlQuery);
+            String queryStatement = "select * from Owner";
+            resultSet = statement.executeQuery(queryStatement);
+
 
             while (resultSet.next()) {
-                System.out.println(resultSet.getString(2) + ", " +
-                        resultSet.getString(3));
+                System.out.println(resultSet.getString(1) + ", " +
+                        resultSet.getString(2) + ", " +
+                        resultSet.getString(3) + ", " +
+                        resultSet.getString(4) + ", " +
+                        resultSet.getString(5));
             }
         }
         // Handle any errors that may have occurred.
