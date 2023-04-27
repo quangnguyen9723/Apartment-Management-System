@@ -59,7 +59,7 @@ CREATE TABLE Maintenance (
 );
 
 --- Change this name because work is a keyword in sql
-CREATE TABLE Works_at (
+CREATE TABLE Work (
   staff_id int,
   building_id int,
   PRIMARY KEY (staff_id, building_id),
