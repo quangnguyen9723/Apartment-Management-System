@@ -41,10 +41,12 @@ CREATE TABLE Apartment (
   building_id int,
   price numeric(8,0),
   capacity int,
+  availability varchar()
   PRIMARY KEY (id),
   FOREIGN KEY (building_id) references building(id)
     on update set null
-    on delete cascade
+    on delete cascade,
+
 );
 
 CREATE TABLE Maintenance (
@@ -224,7 +226,5 @@ SELECT @kuzion_301_id = id FROM Apartment WHERE building_id = (SELECT id FROM Bu
 INSERT INTO Maintenance (apartment_id, staff_id, category, status)
 VALUES (@kuzion_301_id, @jennings_id, 'Other', 'In Progress')
 
---(Minh)
---* Raise the house price due to inflation (Input apartment_id to be updated and new price).
---* Query x available apartments that have the lowest price.
+
 
