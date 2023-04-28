@@ -41,12 +41,12 @@ CREATE TABLE Apartment (
   building_id int,
   price numeric(8,0),
   capacity int,
-  availability varchar()
+  availability varchar(20) DEFAULT 'vacant',
   PRIMARY KEY (id),
   FOREIGN KEY (building_id) references building(id)
     on update set null
     on delete cascade,
-
+  CHECK (Availability in ('vacant', 'occupied'))
 );
 
 CREATE TABLE Maintenance (

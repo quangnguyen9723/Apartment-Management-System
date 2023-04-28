@@ -8,7 +8,9 @@ SET price = price * 1.05
 WHERE building_id = (SELECT id FROM Building WHERE Name = 'Blossom')
 
 -- 5 most expensive house
-SELECT TOP 5 b.Name
+SELECT TOP 5 b.Name AS BuildingName, a.price, a.id AS ApartmentId
 FROM Apartment a
 JOIN Building b ON a.building_id = b.id
+WHERE a.availability = 'vacant'
 ORDER BY a.price ASC
+
