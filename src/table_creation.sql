@@ -223,3 +223,8 @@ DECLARE @kuzion_301_id INT
 SELECT @kuzion_301_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Kuzion') AND capacity = 3 AND price = 1800
 INSERT INTO Maintenance (apartment_id, staff_id, category, status)
 VALUES (@kuzion_301_id, @jennings_id, 'Other', 'In Progress')
+
+--(Minh)
+--* Raise the house price due to inflation (Input apartment_id to be updated and new price).
+--* Query x available apartments that have the lowest price.
+
