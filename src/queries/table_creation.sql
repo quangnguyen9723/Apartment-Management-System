@@ -186,22 +186,22 @@ VALUES ('Annie', 'Jennings', 29500),
        ('Helly', 'Harrington', 32700);
 
 DECLARE @jennings_id INT
-SELECT @jennings_id = id FROM Staff WHERE FirstName = 'Zephyr' AND LastName = 'Jennings'
+SELECT @jennings_id = id FROM Staff WHERE FirstName = 'Annie' AND LastName = 'Jennings'
 INSERT INTO Work (staff_id, building_id)
 VALUES (@jennings_id, @kuzion_id)
 
 DECLARE @fleming_id INT
-SELECT @fleming_id = id FROM Staff WHERE FirstName = 'Olympia' AND LastName = 'Fleming'
+SELECT @fleming_id = id FROM Staff WHERE FirstName = 'Josh' AND LastName = 'Fleming'
 INSERT INTO Work (staff_id, building_id)
 VALUES (@fleming_id, @brown_id)
 
 DECLARE @gates_id INT
-SELECT @gates_id = id FROM Staff WHERE FirstName = 'Theron' AND LastName = 'Gates'
+SELECT @gates_id = id FROM Staff WHERE FirstName = 'Kevin' AND LastName = 'Gates'
 INSERT INTO Work (staff_id, building_id)
 VALUES (@gates_id, @emera_id)
 
 DECLARE @harrington_id INT
-SELECT @harrington_id = id FROM Staff WHERE FirstName = 'Lysandra' AND LastName = 'Harrington'
+SELECT @harrington_id = id FROM Staff WHERE FirstName = 'Helly' AND LastName = 'Harrington'
 INSERT INTO Work (staff_id, building_id)
 VALUES (@harrington_id, @blossom_id)
 
