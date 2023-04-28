@@ -1,4 +1,15 @@
---Create tables
+-- Drop table Owner;
+-- Drop table Building;
+-- Drop table Maintenance;
+-- Drop table Apartment;
+-- Drop table Building;
+-- Drop table Owner;
+-- Drop table Owns;
+-- Drop table Payment;
+-- Drop table Rents;
+-- Drop table Staff;
+-- Drop table Tenant;
+-- Drop table Work;
 
 CREATE TABLE Owner (
   id int identity(1000, 2),
@@ -35,7 +46,6 @@ CREATE TABLE Building (
   PRIMARY KEY (id),
 );
 
--- How to reference to another table with consistent data type?
 CREATE TABLE Apartment (
   id int identity(100, 1),
   building_id int,
