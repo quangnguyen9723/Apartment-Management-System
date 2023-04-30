@@ -90,6 +90,7 @@ CREATE TABLE Payment (
   tenant_id int,
   owner_id int,
   amount numeric(8,2),
+  status varchar(20) DEFAULT 'unpaid' CHECK (status in ('paid', 'unpaid')),
   PRIMARY KEY (apartment_id, due_date),
   FOREIGN KEY (apartment_id) REFERENCES apartment(id)
     on delete cascade
