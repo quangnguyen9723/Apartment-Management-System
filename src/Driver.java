@@ -34,9 +34,9 @@ public class Driver {
         }
 
         switch (choice) {
-            case 1 -> System.out.println(1);
-            case 2 -> System.out.println(2);
-            case 3 -> System.out.println(3);
+            case 1 : System.out.println(1);
+            case 2 : System.out.println(2);
+            case 3 : System.out.println(3);
         }
     }
 }
