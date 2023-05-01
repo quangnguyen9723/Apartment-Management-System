@@ -66,6 +66,13 @@ SELECT
     (SELECT price FROM Apartment WHERE id = Rents.apartment_id) as amount
 FROM Rents;
 
+INSERT INTO Tenant (FirstName, LastName, Gender, DOB)
+VALUES	('Larry', 'Kim', 'Male', '1990-05-15'),
+		('Emily', 'Chen', 'Female', '1992-07-20'),
+		('Robert', 'Johnson', 'Male', '1988-02-28'),
+		('Maria', 'Garcia', 'Female', '1995-10-10'),
+		('David', 'Lee', 'Male', '1991-11-18');
+
 -- Index creation
 CREATE INDEX ind_Owner
 ON Owner (LastName, id);
