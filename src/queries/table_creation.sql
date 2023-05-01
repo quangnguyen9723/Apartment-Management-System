@@ -62,11 +62,9 @@ CREATE TABLE Apartment (
 CREATE TABLE Maintenance (
   id int identity(1, 1),
   apartment_id int,
-  staff_id int,
   category varchar(20),
   status varchar(20),
   PRIMARY KEY (id),
-  FOREIGN KEY (staff_id) references staff(id),
   CHECK (Category in ('Electricity', 'Water', 'Interior', 'Other')),
   CHECK (Status in ('In Progress', 'Done'))
 );
@@ -210,32 +208,34 @@ VALUES (@harrington_id, @blossom_id)
 -- Request maintenance for apartment 101 in Kuzion
 DECLARE @kuzion_101_id INT
 SELECT @kuzion_101_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Kuzion') AND capacity = 2 AND price = 1500
-INSERT INTO Maintenance (apartment_id, staff_id, category, status)
-VALUES (@kuzion_101_id, @jennings_id, 'Electricity', 'In Progress')
+INSERT INTO Maintenance (apartment_id, category, status)
+VALUES (@kuzion_101_id, 'Electricity', 'In Progress')
+
+
 
 -- Request maintenance for apartment 201 in Brown
 DECLARE @brown_201_id INT
 SELECT @brown_201_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Brown') AND capacity = 2 AND price = 1300
-INSERT INTO Maintenance (apartment_id, staff_id, category, status)
-VALUES (@brown_201_id, @fleming_id, 'Water', 'In Progress')
+INSERT INTO Maintenance (apartment_id, category, status)
+VALUES (@brown_201_id, 'Water', 'In Progress')
 
 -- Request maintenance for apartment 102 in Emera
 DECLARE @emera_102_id INT
 SELECT @emera_102_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Emera') AND capacity = 1 AND price = 1200
-INSERT INTO Maintenance (apartment_id, staff_id, category, status)
-VALUES (@emera_102_id, @gates_id, 'Interior', 'Done')
+INSERT INTO Maintenance (apartment_id, category, status)
+VALUES (@emera_102_id, 'Interior', 'Done')
 
 -- Request maintenance for apartment 202 in Blossom
 DECLARE @blossom_202_id INT
 SELECT @blossom_202_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Blossom') AND capacity = 2 AND price = 1100
-INSERT INTO Maintenance (apartment_id, staff_id, category, status)
-VALUES (@blossom_202_id, @harrington_id, 'Electricity', 'In Progress')
+INSERT INTO Maintenance (apartment_id, category, status)
+VALUES (@blossom_202_id, 'Electricity', 'In Progress')
+
 
 -- Request maintenance for apartment 301 in Kuzion
 DECLARE @kuzion_301_id INT
 SELECT @kuzion_301_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Kuzion') AND capacity = 3 AND price = 1800
-INSERT INTO Maintenance (apartment_id, staff_id, category, status)
-VALUES (@kuzion_301_id, @jennings_id, 'Other', 'In Progress')
-
+INSERT INTO Maintenance (apartment_id, category, status)
+VALUES (@kuzion_301_id, 'Other', 'In Progress')
 
 
