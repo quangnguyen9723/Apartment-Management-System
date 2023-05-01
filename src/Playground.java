@@ -2,7 +2,7 @@ import java.sql.*;
 
 import static util.Utility.*;
 
-public class Main {
+public class Playground {
 
     /*
     1 file cho backend (JDBC) de ket noi voi database
