@@ -1,5 +1,11 @@
+import util.Utility;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static util.UseCaseImpl.*;
 
 /**
  * Class to provide Command Line Interface
@@ -13,7 +19,7 @@ public class Driver {
         int choice = -1;
         while (isContinued) {
             printMenu();
-            System.out.print("What operation do you want: ");
+            System.out.print("Which operation do you want: ");
             try {
                 choice = scanner.nextInt();
             } catch (InputMismatchException e) {
@@ -21,9 +27,14 @@ public class Driver {
                 continue;
             }
 
-            handleChoice(choice);
+            try {
+                handleChoice(choice);
+            } catch (SQLException e) {
+                System.out.println("cannot execute operation, try again");
+            }
             if (!isContinued) break;
 
+            System.out.println();
             System.out.print("Do you want to continue? Answer Y/N: ");
             String answer = scanner.next();
             if (answer.toLowerCase().indexOf("n") == 0) {
@@ -50,30 +61,34 @@ public class Driver {
         System.out.println("10. Exit");
     }
 
-    private static void handleChoice(int choice) {
+    private static void handleChoice(int choice) throws SQLException {
         // Echo the input back to the console
         if (choice <= 0 || choice > EXIT) {
             System.out.println("Invalid choice, choose between 1 and " + EXIT);
             return;
         }
-
-        System.out.println(choice);
         if (choice == EXIT) {
             isContinued = false;
             return;
         }
         // handle logic
-        switch (choice) {
-            case 1 -> System.out.println(1);
-            case 2 -> System.out.println(2);
-            case 3 -> System.out.println(3);
-            case 4 -> System.out.println(4);
-            case 5 -> System.out.println(5);
-            case 6 -> System.out.println(6);
-            case 7 -> System.out.println(7);
-            case 8 -> System.out.println(8);
-            case 9 -> System.out.println(9);
-
+        Connection connection = Utility.getConnection();
+        try {
+            connection.setAutoCommit(false);
+            switch (choice) {
+                case 1 -> System.out.println(1);
+                case 2 -> System.out.println(2);
+                case 3 -> addRequest();
+                case 4 -> finishRequest();
+                case 5 -> showUnfinishedRequests();
+                case 6 -> System.out.println(6);
+                case 7 -> System.out.println(7);
+                case 8 -> System.out.println(8);
+                case 9 -> System.out.println(9);
+            }
+        } catch (SQLException e) {
+            connection.rollback();
         }
+
     }
 }
