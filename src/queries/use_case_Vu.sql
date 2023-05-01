@@ -15,7 +15,18 @@ FROM Payment
 JOIN Tenant ON Payment.tenant_id = Tenant.id
 JOIN Owner ON Payment.owner_id = Owner.id
 WHERE Tenant.FirstName = 'Hieu'
-AND Tenant.LastName = 'Dang'
+AND Tenant.LastName = 'Dang';
+
+-- Given the owner's id, query all tenant that currently owe you and overdue
+
+SELECT t.FirstName, t.LastName, p.amount
+FROM Tenant t
+INNER JOIN Payment p ON t.id = p.tenant_id
+INNER JOIN Owns o ON p.apartment_id = o.apartment_id
+WHERE p.status = 'unpaid'
+  AND o.owner_id = <owner_id>
+  AND p.due_date < GETDATE();
+
 
 -- Query all amount of money that is overdue
 SELECT concat(Tenant.FirstName, ' ', Tenant.LastName) as TenantName, concat(Owner.FirstName, ' ', Owner.LastName) as OwnerName, Payment.amount, Payment.due_date
