@@ -2,6 +2,7 @@ import util.Utility;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -47,17 +48,17 @@ public class Driver {
 
     private static void printMenu() {
         System.out.println("====== Options ======");
-        System.out.println("1. Top apartments that have lowest price");
+        System.out.println("1. Top x apartments that have lowest/highest price");
         System.out.println("2. Raise the rent price in a building due to inflation");
 
         System.out.println("3. Add a maintenance request for an apartment");
         System.out.println("4. Mark a maintenance request as finished");
-        System.out.println("5. Show in-process maintenance requests in a building with a list of staff involved");
+        System.out.println("5. Show in-progress maintenance requests in a building (with a list of staff involved)");
 
         System.out.println("6. Add a new tenant's rent");
         System.out.println("7. Remove a tenant");
-        System.out.println("8. Show all tenants that have overdue payment");
-        System.out.println("9. Show the total amount of money that a tenant owes (a owner or more?)");
+        System.out.println("8. Show all overdue payment");
+        System.out.println("9. Show the total amount of money that a tenant owes");
         System.out.println("10. Exit");
     }
 
@@ -76,18 +77,20 @@ public class Driver {
         try {
             connection.setAutoCommit(false);
             switch (choice) {
-                case 1 -> System.out.println(1);
-                case 2 -> System.out.println(2);
+                case 1 -> topPriceApt();
+                case 2 -> raisePriceApt();
                 case 3 -> addRequest();
                 case 4 -> finishRequest();
                 case 5 -> showUnfinishedRequests();
-                case 6 -> System.out.println(6);
-                case 7 -> System.out.println(7);
-                case 8 -> System.out.println(8);
-                case 9 -> System.out.println(9);
+                case 6 -> insertRent();
+                case 7 -> removeTenant();
+                case 8 -> showAllOverdueTenants();
+                case 9 -> showAmountTenantOwe();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             connection.rollback();
+            System.out.println("ERROR: Operation failed");
+            System.out.println(e);
         }
 
     }
