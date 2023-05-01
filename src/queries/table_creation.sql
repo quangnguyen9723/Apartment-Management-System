@@ -62,11 +62,9 @@ CREATE TABLE Apartment (
 CREATE TABLE Maintenance (
   id int identity(1, 1),
   apartment_id int,
-  staff_id int,
   category varchar(20),
   status varchar(20),
   PRIMARY KEY (id),
-  FOREIGN KEY (staff_id) references staff(id),
   CHECK (Category in ('Electricity', 'Water', 'Interior', 'Other')),
   CHECK (Status in ('In Progress', 'Done'))
 );
@@ -128,6 +126,3 @@ CREATE TABLE Rents (
     on delete cascade
     on update cascade
 );
-
-
-
