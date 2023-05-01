@@ -8,7 +8,7 @@ public class UseCaseImpl {
 
     }
 
-    public static void changeRequestStatus() {
+    public static void finishRequest() {
 
     }
 

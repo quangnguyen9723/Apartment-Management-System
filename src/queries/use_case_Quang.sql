@@ -1,6 +1,11 @@
-insert into Maintenance values (?, ?, ?)
+INSERT INTO Maintenance (apartment_id, staff_id, category, status)
+VALUES (1000, 1000, 'Other', 'In Progress')
 
-update Maintenance set status = ? where apartment_id = ?
+
+update Maintenance
+set status = 'Done'
+where apartment_id = 1000
+
 
 select m.apartment_id, m.category
 from Building b
