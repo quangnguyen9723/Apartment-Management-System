@@ -68,7 +68,7 @@ CREATE TABLE Maintenance (
   PRIMARY KEY (id),
   FOREIGN KEY (staff_id) references staff(id),
   CHECK (Category in ('Electricity', 'Water', 'Interior', 'Other')),
-  CHECK (Status in ('Pending for Approval', 'In Progress', 'Done'))
+  CHECK (Status in ('In Progress', 'Done'))
 );
 
 --- Change this name because work is a keyword in sql
@@ -211,7 +211,7 @@ VALUES (@harrington_id, @blossom_id)
 DECLARE @kuzion_101_id INT
 SELECT @kuzion_101_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Kuzion') AND capacity = 2 AND price = 1500
 INSERT INTO Maintenance (apartment_id, staff_id, category, status)
-VALUES (@kuzion_101_id, @jennings_id, 'Electricity', 'Pending for Approval')
+VALUES (@kuzion_101_id, @jennings_id, 'Electricity', 'In Progress')
 
 -- Request maintenance for apartment 201 in Brown
 DECLARE @brown_201_id INT
@@ -229,7 +229,7 @@ VALUES (@emera_102_id, @gates_id, 'Interior', 'Done')
 DECLARE @blossom_202_id INT
 SELECT @blossom_202_id = id FROM Apartment WHERE building_id = (SELECT id FROM Building WHERE Name = 'Blossom') AND capacity = 2 AND price = 1100
 INSERT INTO Maintenance (apartment_id, staff_id, category, status)
-VALUES (@blossom_202_id, @harrington_id, 'Electricity', 'Pending for Approval')
+VALUES (@blossom_202_id, @harrington_id, 'Electricity', 'In Progress')
 
 -- Request maintenance for apartment 301 in Kuzion
 DECLARE @kuzion_301_id INT
