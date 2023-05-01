@@ -25,9 +25,3 @@ JOIN Owner ON Payment.owner_id = Owner.id
 WHERE Payment.due_date < GETDATE()
 AND Payment.status = 'unpaid';
 
-select * from Payment
-select * from Owner
-select * from Owns
-select * from Apartment
-select * from Tenant
-select * from Rents
