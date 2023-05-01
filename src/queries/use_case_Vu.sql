@@ -10,7 +10,7 @@ WHERE t.FirstName = 'Long' AND t.LastName = 'Nguyen')
 DELETE FROM Tenant WHERE id = 1007
 
 --Query all amount of money that Tenant Hieu Dang owes
-SELECT Payment.tenant_id, concat(Tenant.FirstName, ' ', Tenant.LastName) as TenantName, concat(Owner.FirstName, ' ', Owner.LastName) as OwnerName, Payment.amount, Payment.due_date
+SELECT SUM(Payment.amount) as total
 FROM Payment
 JOIN Tenant ON Payment.tenant_id = Tenant.id
 JOIN Owner ON Payment.owner_id = Owner.id
@@ -18,7 +18,7 @@ WHERE Tenant.FirstName = 'Hieu'
 AND Tenant.LastName = 'Dang'
 
 -- Query all amount of money that is overdue
-SELECT Payment.tenant_id, concat(Tenant.FirstName, ' ', Tenant.LastName) as TenantName, concat(Owner.FirstName, ' ', Owner.LastName) as OwnerName, Payment.amount, Payment.due_date,  Payment.status
+SELECT concat(Tenant.FirstName, ' ', Tenant.LastName) as TenantName, concat(Owner.FirstName, ' ', Owner.LastName) as OwnerName, Payment.amount, Payment.due_date
 FROM Payment
 JOIN Tenant ON Payment.tenant_id = Tenant.id
 JOIN Owner ON Payment.owner_id = Owner.id
