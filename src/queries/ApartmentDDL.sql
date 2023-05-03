@@ -1,16 +1,3 @@
--- Drop table Owner;
--- Drop table Building;
--- Drop table Maintenance;
--- Drop table Apartment;
--- Drop table Building;
--- Drop table Owner;
--- Drop table Owns;
--- Drop table Payment;
--- Drop table Rents;
--- Drop table Staff;
--- Drop table Tenant;
--- Drop table Work;
-
 CREATE TABLE Owner (
   id int identity(1000, 2),
   FirstName varchar(50),
