@@ -34,7 +34,7 @@ public class UseCaseImpl {
         Connection connection = Utility.getConnection();
         String query = "update Maintenance set status = ? where id = ?";
 
-        System.out.print("Apartment ID: ");
+        System.out.print("Request ID: ");
         int requestId = scanner.nextInt();
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -48,7 +48,7 @@ public class UseCaseImpl {
 
     public static void showUnfinishedRequests() throws SQLException {
         Connection connection = Utility.getConnection();
-        String query = "select m.apartment_id, m.category " +
+        String query = "select m.id, m.apartment_id, m.category " +
                 "from Building b " +
                 "join Apartment a on b.id = a.building_id " +
                 "join Maintenance m on a.id = m.apartment_id " +
@@ -65,8 +65,9 @@ public class UseCaseImpl {
         connection.commit();
         System.out.println();
         while (resultSet.next()) {
-            System.out.println("apartment id: " + resultSet.getString(1)
-                    + ", category: " + resultSet.getString(2));
+            System.out.println("Request ID: " + resultSet.getString(1)
+                    + ", apartment id: " + resultSet.getString(2)
+                    + ", category: " + resultSet.getString(3));
         }
     }
 

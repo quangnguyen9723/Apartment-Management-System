@@ -53,7 +53,7 @@ public class Driver {
 
         System.out.println("3. Add a maintenance request for an apartment");
         System.out.println("4. Mark a maintenance request as finished");
-        System.out.println("5. Show in-progress maintenance requests in a building (with a list of staff involved)");
+        System.out.println("5. Show in-progress maintenance requests in a building");
 
         System.out.println("6. Add a new tenant's rent");
         System.out.println("7. Remove a tenant");
